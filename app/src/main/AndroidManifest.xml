@@ -20,7 +20,10 @@
         </activity>
         <activity android:name=".rtdb.RTDBActivity" />
         <activity android:name=".rtdb.RTDBActivity02" />
-        <activity android:name=".auth.AuthActivity"/>
+        <activity android:name=".auth.AuthActivity" />
+        <activity android:name=".auth.AuthLoginActivity" />
+        <activity android:name=".auth.AuthRegisterActivity" />
+        <activity android:name=".auth.Home"></activity>
     </application>
 
 </manifest>
