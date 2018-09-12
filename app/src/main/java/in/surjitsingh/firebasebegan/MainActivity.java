@@ -8,6 +8,10 @@ import android.view.View;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import in.surjitsingh.firebasebegan.auth.AuthActivity;
+import in.surjitsingh.firebasebegan.rtdb.RTDBActivity;
+import in.surjitsingh.firebasebegan.rtdb.RTDBActivity02;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -18,14 +22,21 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.fRTDB).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ));
+                startActivity(new Intent(MainActivity.this, RTDBActivity.class));
+            }
+        });
+
+        findViewById(R.id.fRTDB02).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RTDBActivity02.class));
             }
         });
 
         findViewById(R.id.fAuth).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(MainActivity.this, AuthActivity.class));
             }
         });
     }

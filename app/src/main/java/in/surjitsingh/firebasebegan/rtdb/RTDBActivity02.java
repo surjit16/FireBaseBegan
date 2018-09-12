@@ -1,9 +1,10 @@
 package in.surjitsingh.firebasebegan.rtdb;
 
 import android.app.ProgressDialog;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,11 +13,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +29,7 @@ import java.util.List;
 
 import in.surjitsingh.firebasebegan.R;
 
-public class RTDBActivity extends AppCompatActivity {
+public class RTDBActivity02 extends AppCompatActivity {
 
     RecyclerView recyclerView;
     EditText uId, name, email, mess;
@@ -97,19 +98,38 @@ public class RTDBActivity extends AppCompatActivity {
     }
 
     private void fetchData() {
-        myRef.addValueEventListener(new ValueEventListener() {
+        myRef.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                dbData.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    dbData.add(snapshot.getValue(DBData.class));
-                }
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                dbData.add(dataSnapshot.getValue(DBData.class));
                 myAdapter.notifyDataSetChanged();
             }
 
             @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                String thisDbID = dataSnapshot.getValue(DBData.class).getId();
+                for (DBData c : dbData){
+                    if (c.getId().equals(thisDbID)){
+                        dbData.remove(c);
+                        myAdapter.notifyDataSetChanged();
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(RTDBActivity.this, "Error " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -129,14 +149,14 @@ public class RTDBActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(RTDBActivity.this, "Data Added Successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RTDBActivity02.this, "Data Added Successfully", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(RTDBActivity.this, "Data Insertion Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RTDBActivity02.this, "Data Insertion Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     }
                 });
