@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "698394904223",
+    "firebase_url": "https://fir-began.firebaseio.com",
+    "project_id": "fir-began",
+    "storage_bucket": "fir-began.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698394904223:android:749b77b3d51bbac4",
+        "android_client_info": {
+          "package_name": "in.surjitsingh.firebasebegan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "698394904223-1qgqokhsoonqh10gfncuhrqcoh5d7r68.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.surjitsingh.firebasebegan",
+            "certificate_hash": "bb364662980c7a3d09dd2fdeff55f24202678fba"
+          }
+        },
+        {
+          "client_id": "698394904223-re53hrci1ih2648ocq3bvdid06duv24e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCx8KfBc_KxCR4GI4MWFv73r6urfxXyyKY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "698394904223-re53hrci1ih2648ocq3bvdid06duv24e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

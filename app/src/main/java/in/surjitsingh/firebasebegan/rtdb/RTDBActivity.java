@@ -3,6 +3,8 @@ package in.surjitsingh.firebasebegan.rtdb;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import in.surjitsingh.firebasebegan.R;
+
 public class RTDBActivity extends AppCompatActivity {
 
     @Override
